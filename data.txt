@@ -1,0 +1,7 @@
+hola como andas
+bien bien
+aca andamos eaiou 
+recordando el tratamiento de archivos en C
+vos?
+bien murcielago por srt
+ 
