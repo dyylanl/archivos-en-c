@@ -5,4 +5,4 @@
 
 > Compilar como gcc archivo.c -o main
 
-> Ejecutar como: $./main entrada.txt salida.txt
+> Ejecutar como: $>./main entrada.txt salida.txt
