@@ -1,0 +1,13 @@
+En la mayoria de los ejercicios se pide sobreescribir el mismo archivo.
+Como se pierden los archivos originales luego de ejecutar el programa se guardan .bk para los originales.
+Para cada ejecución copiar el bk y renombrarlo a por ejemplo "10.dat" (según sea el caso).
+
+Los binarios los leo con el programa Bless Hex Editor.
+Tener en cuenta que la maquina lee en little endian, por lo que los binarios estan armados en little endian.
+Little endian (primero los valores de menor peso)
+Bin endian (primero los valores de mayor peso (es como se lee habitualmente los numeros))
+
+EQUIVALENCIAS para conjuntos de 4 bytes. (x0A se encuentra en hexadecimal, equivale a 10 en decimal)
+Valor	Little Endian		BinEndian					
+1		x01x00x00x00 		x00x00x00x01
+10		x0Ax00x00x00 		x00x00x00x0A

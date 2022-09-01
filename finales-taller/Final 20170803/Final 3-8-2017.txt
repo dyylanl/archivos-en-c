@@ -1,0 +1,52 @@
+1- MACROS
+Armar una macro ASSERT que reciba una condicion  (ej variable==1) y un mensaje ("Error"). Si la condicion no se cumple debe lanzar el mensaje y la linea con el código de error del mensaje.
+
+R:
+#include <stdio.h>
+#define ASSERT(cond, msg) ((!cond) ? printf("Mensaje: %s\nNroLinea %d\n",msg,__LINE__) : printf("Test exitoso"))
+#define ASSERT2(cond, msg) ((cond) ?: printf("Mensaje: %s\nNroLinea %d\n",msg,__LINE__)) //Se seria la manera correcta
+
+int main() {
+    int v = 0;
+    ASSERT(v==1, "Mensaje");
+    return 0;
+}
+
+2- TEMPLATE
+Ejemplificar como se hace que un template tenga un tipo default.
+
+3- VIRTUAL
+Explicar 'virtual', y su relacion con las VTABLES, dar un ejemplo en que sea necesario su uso.
+
+4- CADENAS
+Nos pasan por parametro una cadena T, y un array de cadenas L, la longitud de la cadena es Q.
+Debemos devolver la cantidad de coincidencias de las palabras L en la cadena T.
+
+5- ARCHIVOS
+Se recibe el nombre de un archivo por parametro.
+Sin crear nuevos archivos se debe reemplazar todas los match "UNO", "DOS" , "TRES" por '1','2','3' respectivamente.
+
+6- SOCKETS
+Realizar un programa que escuche en el puerto 9000 y reciba hasta 10 conexiones de forma secuencial.
+En cada conexion recibir toda la informacion e imprimirla en un archivo asociado a esa conexion.
+Cerrar el programa cuando finalizen las 10 conexiones.
+
+7- THREADS
+Se pide sacar el promedio de un vector con dos hilos. Cada hilo recorre un rango del vector.
+Es necesario utilizar control de hilos? Si? No? Porque?
+
+8- OPERADORES
+Definir todos los operadores necesarios para que se cumpla:
+Cadena c3("abc"); Cadena c2("def"); Cadena c3(c1+c2)
+c1 = c2 = "ghi";
+c4 = c1+c2;
+std::cout << c4 << std::endl;
+
+9- DEFINICIONES
+Daba unas declaraciones/definiciones y habia que explicar con palabras que significaban.
+
+10- GTK
+Dibujar un circulo que tenga de radio el alto de la ventana (a lo ancho sobraba espacio en la ventana)
+
+1 2 3  4  5 6 7 8 9 10
+M M B- B- R B B B B R

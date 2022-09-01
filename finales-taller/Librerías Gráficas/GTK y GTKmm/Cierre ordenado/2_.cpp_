@@ -1,0 +1,31 @@
+/*
+ * Escriba la función MAYUSCULA que tome el contenido de un Edit de una ventana
+ * (recibido como parámetro) y lo escriba en el mismo control poniéndo en mayúscula.
+ */
+
+#include <gtkmm.h>
+
+// Todo lo que va de acá para abajo no está pedido en el ejercicio, es sólo para ver si funciona la función
+class BotonCerrar : public Gtk::Button {
+	public:
+        BotonCerrar() : Gtk::Button("Cerrar") {
+		}
+	private:
+		void on_clicked() { 
+		    //Gtk::Aplication::close();
+		}
+};
+
+int main(int argc, char* argv[]) {
+	Gtk::Main kit(argc, argv);
+	//Gtk::Entry entry;
+	BotonCerrar boton();
+	Gtk::VBox vbox;
+	//vbox.add(entry);
+	vbox.add(boton);
+	Gtk::Window v;
+	v.add(vbox);
+	v.show_all();
+	Gtk::Main::run(v);
+	return 0;
+}	

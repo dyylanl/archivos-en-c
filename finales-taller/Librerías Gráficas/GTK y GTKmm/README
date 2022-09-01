@@ -1,0 +1,9 @@
+Para compilar todos los .cpp de la carpeta:
+make -f Makefile -B
+
+Para ejecutar:
+./<nombreEjecutable>
+
+
+
+g++ ej10.cpp -o ej10 `pkg-config gtkmm-2.4 --cflags --libs` -lstdc++ -std=c++11

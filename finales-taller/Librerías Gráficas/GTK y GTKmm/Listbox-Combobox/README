@@ -1,0 +1,4 @@
+COMPILAR:
+>>> make
+EJECUTAR:
+./<nombreEjecutable>

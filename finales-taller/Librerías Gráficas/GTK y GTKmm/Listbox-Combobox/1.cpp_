@@ -1,0 +1,53 @@
+/*
+ * 4) Invertir orden
+ */
+
+
+#include <gtkmm.h>
+#include <list>
+
+void invertirOrden(Gtk::ComboBoxText* combo) {
+    combo->set_active(0);
+    Glib::ustring texto;
+    std::list< Glib::ustring > contenido; //Creo un vector de strings
+    while (combo->get_active_row_number() != -1) { //Recorro todos los elementos
+        texto = combo->get_active_text(); //Seleccionas el texto activo
+        combo->remove_text(texto); //Borras el elemento
+        contenido.push_back(texto); //Guardo el elemento en el vector
+        combo->set_active(0); //Seleccionas el elemento 0
+    }
+    std::list< Glib::ustring >::reverse_iterator it; //Interador a traves de un vector
+    for (it = contenido.rbegin(); it != contenido.rend(); ++it) //Recorre el vector
+        combo->append_text(*it); //Cargo de nuevo los elementos del vector en el combobox
+}
+
+// Todo lo que va de acá para abajo no está pedido en el ejercicio, es sólo para ver si funciona la función
+class BotonOrdenar : public Gtk::Button {
+	public:
+		BotonOrdenar(Gtk::ComboBoxText* combo) : Gtk::Button("Invertir orden") {
+			this->combo = combo;	
+		}
+	private:
+		Gtk::ComboBoxText* combo;
+		void on_clicked() { 
+			invertirOrden(combo);
+		}
+};
+
+int main(int argc, char* argv[]) {
+	Gtk::Main kit(argc, argv);
+	Gtk::ComboBoxText combo;
+	combo.append_text("aaA");
+    combo.append_text("bbB");
+	combo.append_text("ccC");
+	combo.append_text("ddD");
+	BotonOrdenar boton(&combo);
+	Gtk::VBox vbox;
+	vbox.add(combo);
+	vbox.add(boton);
+	Gtk::Window v;
+	v.add(vbox);
+	v.show_all();
+	Gtk::Main::run(v);
+	return 0;
+}	

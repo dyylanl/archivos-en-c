@@ -1,0 +1,81 @@
+COMANDOS PARA EL GIT
+usuario: jotaemecepe
+contraseña: 9Jrc8t290 (creo, o alguna de esas)
+
+BAJAR REPOSITORIO COMPLETO DEL GIT
+>>> git clone <repo>
+Ej:
+>>> git clone https://github.com/kmoriell/self-interpreter.git
+
+Antes de editar descargar novedades del repositorio con git pull
+>>> git pull
+
+Luego de editar subir novedades propias
+>>> git add *.cpp
+>>> git add *.h
+>>> git commit -m "mensaje..."
+>>> git push origin master
+
+Ej para subir todo al repo del tp3:
+git add *.cpp && git add *.h && git add pruebas/*.self && git commit -m "tamaño ventana en GUI (supuestamente)" && git push origin master
+
+
+EJECUTAR PROGRAMA
+>>> ./<nombreEjecutable> <arg1> <arg2> .. <argn>
+Ejemplos:
+>>> ./tp "pruebas/"
+>>> ./ejecutable
+>>> ./tp "pruebas/"
+>>> ./server 2020
+
+COMPILAR con archivo make
+make -B
+
+
+COMPILAR CLIENTE SERVIDOR con makefile Makefile_client_server
+>>> make -f Makefile_client_server -B
+>>> ./server <puerto>
+>>> ./client localhost <puerto> <archivo>
+
+>>> ./server s 9090
+>>> ./server f pruebas/00
+>>> ./client localhost 9090 pruebas/0.self
+
+Compilacion manual con 1 archivo en C
+>>> gcc <nombreArchivo.c> -o <nombreEjecutable>
+Compilacion manual con 1 archivo en C que soporte math.h
+>>> gcc <nombreArchivo.c> -lm -o <nombreEjecutable>
+
+NETCAT (Herramienta para emular un cliente o un servidor)
+Terminal Server:  netcat -l 9090 -v
+Terminal Cliente: netcat 127.0.0.1 9090 -v
+El flag -v (verbose) tira data extra
+
+COMPILAR 1 ARCHIVO en C++11
+>>> g++ -std=c++11 <nombreArchivo.cpp> -o <nombreEjecutable>
+
+COMPILAR 1 ARCHIVO en C++98
+>>> g++ <nombreArchivo.cpp> -o <nombreEjecutable>
+
+COMPILAR GTK 2.0
+>>> gcc -o gtkPrueba gtkPrueba.c `pkg-config --libs --cflags gtk+-2.0`
+
+COMPILAR GTKmm 3.0 en C++11
+>>> g++ `pkg-config gtkmm-3.0 --cflags --libs` -lstdc++ -std=c++11
+>>> g++ client_mainWindow.cpp -o client_mainWindow `pkg-config gtkmm-3.0 --cflags --libs` -lstdc++ -std=c++11
+
+VALGRIND (Es una herramienta para chequear leaks de memoria)
+Para testear con valgrind anteponer "valgrind" al ./
+Ej:
+>>> valgrind ./client 127.0.0.1 9090 < client1.in
+
+Si queremos enviar informacion por stdin a un ejecutable correr
+>>> ./<nombreEjecutable> <arg1> .. <argn> < <archivoQueEntraPorSTDIN>
+Ejemplo:
+>>> ./client 127.0.0.1 9090 < client1.in
+
+COMPILAR CON THREADS en C++11
+>>> g++ -pthread -std=c++11 <nombreArchivo.cpp> -o <nombreEjecutable>
+
+GDB (Es una herramienta de debug)
+

@@ -1,0 +1,54 @@
+Ventana:
+X=0,Y=0 ARRIBA A LA DERECHA
+X=0,Y=1 ABAJO A LA DERECHA
+X=1,Y=0 ARRIBA A LA IZQUIERDA
+X=1,Y=1 ABAJO A LA IZQUIERDA
+
+FIRMA
+static gboolean draw(GtkWidget* widget, cairo_t* cr, gpointer data) {
+
+//Creo y normalizo la superficie de dibujo
+int width = gtk_widget_get_allocated_width(widget);
+int height = gtk_widget_get_allocated_height(widget);
+cairo_surface_t* surface = gdk_window_create_similar_surface(gtk_widget_get_window(widget), CAIRO_CONTENT_COLOR, width, height);
+cairo_scale(cr, width, height);
+
+
+
+//FUNCIONES PARA DIBUJAR
+//Paleta RGB (0a1, 0a1, 0a1) de trabajo.
+cairo_set_source_rgb(cr, Red=1.0, Green=1.0, Blue=1.0);
+
+//Desplaza el puntero por la ventana de forma relativa
+cairo_move_to(cr, X=0.0, Y=0.0);
+
+//Dibuja una linea por la ventana con desplazamiento relativo.
+cairo_rel_line_to(cr, X=1.0, Y=0.0);
+
+//Pinta el contorno de lo dibujado
+cairo_stroke(cr);
+
+//Pinta el relleno de lo dibujado (siempre y cuando se haya cerrado la figura)
+cairo_fill(cr);
+
+//Defino el ancho de la linea
+cairo_set_line_width(cr, 0.05);
+
+//Cierra el contorno de la figura dibujada con una linea entre el inicio y el final.
+cairo_close_path(cr);
+
+//Destruyo la superficie de dibujo
+cairo_surface_destroy(surface);
+
+return FALSE;
+}
+
+
+Equivalencia de funciones para dibujar.
+GTK (.c)				GTKmm (.cpp)
+cairo_*(cr,...); 		ctx->*(...);
+
+
+Para crear una ventana con un area de trabajo no se hace mas que crear una ventana y se le agregar el drawing area
+Si queremos que se dibuje algo, hacemos una clase que herede de DrawingArea y redefinimos on_expose_event
+
